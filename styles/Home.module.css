@@ -1,0 +1,22 @@
+.article {
+  max-width: 400px;
+  max-height: 400px;
+  background-color: #6528f7;
+  border-radius: 25px;
+  padding: 10px;
+  color: #a076f9;
+  margin-bottom: 10px;
+}
+
+.articleButton {
+  margin-top: 5px;
+  background-color: #a076f9;
+  border-radius: 25px;
+  border: none;
+  padding: 5px;
+  color: #ede4ff;
+}
+
+.articleTitle {
+  color: #d7bbf5;
+}
