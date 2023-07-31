@@ -1,6 +1,7 @@
 .page {
   background-color: #ede4ff;
   height: 100vh;
+  overflow-y: auto;
 }
 
 .diary {
@@ -51,4 +52,51 @@
 
 .navBarElements:hover {
   cursor: pointer;
+}
+
+.mediumButtonDownLeft {
+  background-color: #a076f9;
+  border-radius: 25px;
+  border: none;
+  padding: 10px;
+  font-size: large;
+  color: #ede4ff;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.mediumButtonDownLeft:hover {
+  cursor: pointer;
+}
+
+.contentDiv p {
+  margin-top: 10px;
+}
+
+.parentViewer {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.parentViewer h1 {
+  color: #6528f7;
+  border-bottom: 2px solid #d7bbf5;
+  padding: 5px;
+}
+
+.parentViewer h2 {
+  color: #a076f9;
+  padding: 10px;
+}
+
+.parentViewer h3 {
+  color: #d7bbf5;
+  padding: 15px;
+}
+
+.textarea {
+  min-width: 100%;
+  max-width: 100%;
+  height: 500px;
 }
