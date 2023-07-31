@@ -29,6 +29,10 @@
   bottom: 10px;
 }
 
+.articleButton:hover {
+  cursor: pointer;
+}
+
 .articleTitle {
   color: #d7bbf5;
 }
@@ -43,4 +47,8 @@
   display: inline-block;
   vertical-align: middle;
   color: #d7bbf5;
+}
+
+.navBarElements:hover {
+  cursor: pointer;
 }
