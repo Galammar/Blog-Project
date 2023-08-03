@@ -6,11 +6,16 @@ import React from 'react';
 export default function Home() {
   let [currentPage, setCurrentPage] = useState('');
   let [viewingArticleID, setViewingArticleID] = useState(1);
-  const [inputValue, setInputValue] = useState('');
+  const [newTitle, setNewTitle] = useState('');
+  const [newContent, setNewContent] = useState('');
 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  let [anouncements, setAnouncements] = useState([
+    {
+      title: 'Welcome to <i>"My Awesome Blog"</i>',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc nisl, dictum in laoreet in, rhoncus at massa. Curabitur odio libero, maximus scelerisque lectus eget, consequat interdum libero. Donec sed maximus justo, sit amet faucibus magna. Integer ac quam velit. Maecenas vulputate rutrum pretium. Pellentesque dapibus risus nunc, at imperdiet metus aliquam sed. Nulla in pellentesque metus. Pellentesque lacinia, magna nec eleifend eleifend, velit leo cursus massa, bibendum dictum ligula sem et quam. Nam posuere, sem vitae imperdiet scelerisque, nulla elit hendrerit ligula, eget consequat dolor ante sed metus. Suspendisse aliquet mauris vel tortor dapibus egestas. Donec nec eros in lorem feugiat dictum nec a velit. Nam commodo sem sit amet imperdiet egestas. Donec tellus sem, volutpat eget lacus quis, consectetur vulputate ex. Cras elementum leo euismod metus aliquet fermentum.',
+    },
+  ]);
   let [library, setLibrary] = useState([
     {
       title: 'Greetings',
@@ -77,16 +82,26 @@ export default function Home() {
           <h2 onClick={() => setCurrentPage('articles')}>Articles</h2>
         </span>
         <span className={styles.navBarElements}>
-          <h2 onClick={() => setCurrentPage('new')}>New +</h2>
+          <h2 onClick={() => setCurrentPage('new')}>Compose</h2>
         </span>
+      </div>
+    );
+  }
+
+  function Anouncement({ anouncement }) {
+    return (
+      <div className={styles.anouncementBox}>
+        <h1 dangerouslySetInnerHTML={{ __html: anouncement.title }}></h1>
+        <div dangerouslySetInnerHTML={{ __html: anouncement.content }}></div>
       </div>
     );
   }
 
   function Homepage() {
     return (
-      <div>
-        <h1>Home</h1>
+      <div className={styles.homeBody}>
+        <Anouncement anouncement={anouncements[anouncements.length - 1]} />
+        <Diary />
       </div>
     );
   }
@@ -102,20 +117,35 @@ export default function Home() {
   function New() {
     return (
       <div className={styles.parentViewer}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={inputValue}
-          onChange={handleChange}
-        />
+        <input type="text" id="title" placeholder="Title" />
+        <br />
+        <textarea
+          name=""
+          id="preface"
+          className={styles.textareaSmall}
+          placeholder="A small preface for your article"
+        ></textarea>
         <br />
         <textarea
           className={styles.textarea}
           name=""
-          id=""
+          id="content"
           placeholder="<h2>Content</h2>"
         ></textarea>
-        <button className={styles.mediumButtonDownLeft}>{'Done >'}</button>
+        <button
+          className={styles.mediumButtonDownLeft}
+          onClick={() => {
+            setNewTitle(document.getElementById('title').value);
+            setNewContent(document.getElementById('content').value);
+            library.push({
+              title: newTitle,
+              content: newContent,
+              preface: document.getElementById('preface').value,
+            });
+          }}
+        >
+          {'Done >'}
+        </button>
       </div>
     );
   }
