@@ -6,8 +6,6 @@ import React from 'react';
 export default function Home() {
   let [currentPage, setCurrentPage] = useState('');
   let [viewingArticleID, setViewingArticleID] = useState(1);
-  const [newTitle, setNewTitle] = useState('');
-  const [newContent, setNewContent] = useState('');
 
   let [anouncements, setAnouncements] = useState([
     {
@@ -135,11 +133,9 @@ export default function Home() {
         <button
           className={styles.mediumButtonDownLeft}
           onClick={() => {
-            setNewTitle(document.getElementById('title').value);
-            setNewContent(document.getElementById('content').value);
             library.push({
-              title: newTitle,
-              content: newContent,
+              title: document.getElementById('title').value,
+              content: document.getElementById('content').value,
               preface: document.getElementById('preface').value,
             });
           }}
